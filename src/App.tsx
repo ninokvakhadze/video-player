@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled, {createGlobalStyle} from "styled-components";
 import play from "./assets/play.svg";
 import pause from "./assets/pause.svg";
 import Back from "./assets/backward-step-solid.svg";
