@@ -17,7 +17,7 @@ const playbackSpeedOptions = [
 
 function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const progressRef = useRef<HTMLProgressElement>(null); // Ref for the progress bar input element
+  const progressRef = useRef<HTMLProgressElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1.0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
@@ -85,24 +85,20 @@ function App() {
   const handleProgressClick: React.MouseEventHandler<HTMLProgressElement> = (
     e
   ) => {
-    // Calculate the new currentTime based on the click position
     const progressBar = progressRef.current!;
     const clickX = e.nativeEvent.offsetX;
     const progressBarWidth = progressBar.clientWidth;
     const newTime = (clickX / progressBarWidth) * duration;
 
-    // Update the video's currentTime
     videoRef.current!.currentTime = newTime;
   };
 
-  // Format time in HH:MM:SS format
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  // Calculate the progress percentage
   const progress = (currentTime / duration) * 100 || 0;
 
   return (
